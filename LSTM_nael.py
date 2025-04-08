@@ -5,7 +5,7 @@ import tensorflow.keras.backend as K
 # In a separate test script or a Jupyter cell:
 from data_loader_nael import load_sequence_data_fixed_window
 
-sequences, user_ids = load_sequence_data_fixed_window("FreeDB2.csv", fixed_length=1000, train = True)
+sequences, user_ids = load_sequence_data_fixed_window("FreeDB2.csv", fixed_length=1500, train = True)
 print("Sequences shape:", sequences.shape)  # Expect (num_sessions, 1000, 5)
 print("User IDs shape:", user_ids.shape)
 print("First session sample:\n", sequences[0])
@@ -38,7 +38,7 @@ def contrastive_loss(y_true, y_pred):
     margin = 1
     return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
 
-input_shape = (1000, 5)
+input_shape = (1500, 5)
 base_network = create_sequence_model(input_shape)
 
 input_a = Input(shape=input_shape)

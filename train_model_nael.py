@@ -28,7 +28,7 @@ siamese_model.compile(optimizer=optimizer, loss=contrastive_loss_with_margin(new
 
 # --- Step 1: Load Data ---
 # Use a fixed window of 1000 keystrokes.
-train_sequences, train_user_ids = load_sequence_data_fixed_window("FreeDB2.csv", fixed_length=1000, train=True)
+train_sequences, train_user_ids = load_sequence_data_fixed_window("FreeDB2.csv", fixed_length=1500, train=True)
 
 # Augment the data
 # augmented_train_sequences = augment_data(train_sequences, noise_std=0.01)

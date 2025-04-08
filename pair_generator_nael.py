@@ -46,7 +46,7 @@ def prepare_sequence_pairs(sequences, user_ids, num_pairs_per_user=5):
     
     return np.array(pairs), np.array(labels)
 
-sequences, user_ids = load_sequence_data_fixed_window("FreeDB2.csv", fixed_length=1000, train = True)
+sequences, user_ids = load_sequence_data_fixed_window("FreeDB2.csv", fixed_length=1500, train = True)
 
 pairs, labels = prepare_sequence_pairs(sequences, user_ids, num_pairs_per_user=5)
 

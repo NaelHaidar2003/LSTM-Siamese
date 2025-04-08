@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def load_sequence_data_fixed_window(file_path, fixed_length=1000, train=True):
+def load_sequence_data_fixed_window(file_path, fixed_length=1500, train=True):
     """
     Load keystroke data from a CSV file, group by user and session,
     and extract a fixed window (first fixed_length events) from each session.
@@ -36,7 +36,7 @@ def load_sequence_data_fixed_window(file_path, fixed_length=1000, train=True):
     if train:
         selected_users = unique_users[:80]
     else:
-        selected_users = unique_users[-20:]
+        selected_users = unique_users[-19:]
     
     # Filter data to include only the selected users
     data = data[data['user_id'].isin(selected_users)]

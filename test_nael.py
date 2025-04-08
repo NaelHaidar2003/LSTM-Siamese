@@ -9,16 +9,17 @@ from data_loader_nael import load_sequence_data_fixed_window
 from pair_generator_nael import prepare_sequence_pairs
 
 # Load test data (using last 20 users)
-sequences, user_ids = load_sequence_data_fixed_window("FreeDB2.csv", fixed_length=1000, train=False)
+sequences, user_ids = load_sequence_data_fixed_window("FreeDB2.csv", fixed_length=1500, train=False)
 
 # Get unique users and filter for those with at least two sessions
 unique_users = np.unique(user_ids)
 valid_users = [user for user in unique_users if len(np.where(user_ids == user)[0]) >= 2]
 
 # Load the saved Siamese model
-model = load_model("best_siamese_model.keras", custom_objects={
+model = load_model("best_siamese_model_tuned.keras", custom_objects={
     "euclidean_distance": euclidean_distance,
-    "contrastive_loss": contrastive_loss
+    "contrastive_loss": contrastive_loss,
+    "loss": contrastive_loss
 })
 
 # Evaluate on 20 random valid users
